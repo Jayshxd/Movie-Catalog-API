@@ -4,6 +4,15 @@ public class MovieDTO {
     private String title;
     private String genre;
     private Long releaseYear;
+    private Long directorId;
+
+    public Long getDirectorId() {
+        return directorId;
+    }
+
+    public void setDirectorId(Long directorId) {
+        this.directorId = directorId;
+    }
 
     public Long getReleaseYear() {
         return releaseYear;

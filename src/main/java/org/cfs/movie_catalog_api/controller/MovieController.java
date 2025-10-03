@@ -3,6 +3,7 @@ package org.cfs.movie_catalog_api.controller;
 import org.cfs.movie_catalog_api.dto.MovieDTO;
 import org.cfs.movie_catalog_api.entities.Movie;
 import org.cfs.movie_catalog_api.repo.MovieRepo;
+import org.cfs.movie_catalog_api.service.DirectorService;
 import org.cfs.movie_catalog_api.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,10 +16,12 @@ import java.util.List;
 @RequestMapping("/movies")
 public class MovieController {
     private final MovieService movieService;
+    private final DirectorService directorService;
 
     @Autowired
-    public MovieController(MovieService movieService) {
+    public MovieController(MovieService movieService, DirectorService directorService) {
         this.movieService = movieService;
+        this.directorService = directorService;
     }
 
 
@@ -32,8 +35,8 @@ public class MovieController {
     }
 
     @PostMapping
-    public ResponseEntity<Movie> createMovie(@RequestBody Movie movie){
-        Movie newMovie = movieService.addMovie(movie);
+    public ResponseEntity<Movie> createMovie(@RequestBody MovieDTO movieDTO){
+        Movie newMovie = movieService.addMovie(movieDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(newMovie);
     }
 
