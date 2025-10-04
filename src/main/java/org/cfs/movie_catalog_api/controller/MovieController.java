@@ -68,5 +68,15 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.OK).body(temp);
     }
 
+    @GetMapping("/releaseYear")
+        public ResponseEntity<List<Movie>> allMoviesafter2022(@RequestParam Long releaseYear){
+            List<Movie> temp = movieService.getAllMoviesAfter2022year(releaseYear);
+            if(temp.isEmpty()){
+                return  ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(temp);
+        }
+
+
 
 }

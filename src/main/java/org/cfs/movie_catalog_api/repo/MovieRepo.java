@@ -12,6 +12,6 @@ public interface MovieRepo extends JpaRepository<Movie,Long> {
     public List<Movie> findByGenreAndReleaseYear(String genre,Long releaseYear);
     public List<Movie> findByGenre(String genre);
     public List<Movie> findByReleaseYear(Long releaseYear);
-
+    List<Movie> findByReleaseYearGreaterThan(Long releaseYear);
 
 }

@@ -69,6 +69,10 @@ public class MovieService {
         return movieRepo.findByGenreAndReleaseYear(genre,releaseYear);
     }
 
+    public List<Movie> getAllMoviesAfter2022year(Long releaseYear){
+        return movieRepo.findByReleaseYearGreaterThan(releaseYear);
+    }
+
 
 
 
